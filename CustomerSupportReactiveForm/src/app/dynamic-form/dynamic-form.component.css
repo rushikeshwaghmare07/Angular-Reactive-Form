@@ -1,0 +1,33 @@
+.main-heading {
+    padding-left: 70px;
+    text-align: center;
+}
+
+.img-fluid {
+    padding-left: 80px;
+    height: 130px;
+}
+
+.col-md-12 {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.required {
+    color: red;
+}
+
+.custom-submit-btn {
+    background-color: rgb(156, 52, 97);
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 0;
+    box-shadow: inset;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.custom-submit-btn:hover {
+    background-color: rgb(138, 49, 88);
+}

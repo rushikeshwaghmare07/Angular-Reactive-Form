@@ -1,0 +1,114 @@
+<div class="container mt-5 p-3 border rounded">
+    <form [formGroup]="CustomerSupportForm" (ngSubmit)="CustomerSupportForm.status !== 'INVALID' && submitForm()">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="main-heading">
+                        <span style="color:  rgb(245, 47, 132);">Contact Our</span> <br>
+                        <span>Customer Support Center</span>
+                    </h1>
+                </div>
+                <div class="col-md-6">
+                    <img src="assets\laptop1.jpg" alt="laptop" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-gorup">
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h2>Contact Information</h2>
+                    <p>Please fill out your contact information below.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Name -->
+        <div class="form-group">
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <label for="firstName" class="form-label">First Name<span class="required">*</span></label>
+                    <input [class.is-invalid]="CustomerSupportForm.get('firstName')?.invalid && CustomerSupportForm.get('firstName')?.touched" type="text" class="form-control" placeholder="Enter your First Name" id="firstName" formControlName="firstName">                 
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('firstName')?.hasError('required') && CustomerSupportForm.get('firstName')?.touched">First Name is required</small>                 
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('firstName')?.hasError('pattern') && CustomerSupportForm.get('firstName')?.touched">Please enter alphabet only.</small>
+                </div>
+                  
+                <div class="col-md-4">
+                    <label for="lastName" class="form-label">Last Name<span class="required">*</span></label>
+                    <input [class.is-invalid]="CustomerSupportForm.get('lastName')?.invalid && CustomerSupportForm.get('lastName')?.touched" type="text" class="form-control" placeholder="Enter your Last Name" id="lastName" formControlName="lastName">                   
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('lastName')?.hasError('required') && CustomerSupportForm.get('lastName')?.touched">Last Name is required</small>                 
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('lastName')?.hasError('pattern') && CustomerSupportForm.get('lastName')?.touched">Please enter alphabet only.</small>
+                </div>   
+            </div>
+        </div>
+        <!-- email -->
+        <div class="form-group">
+            <div class="row mt-4">
+                <div class="col-md">
+                    <label for="email" class="form-label">Email<span class="required">*</span></label>
+                    <input [class.is-invalid]="CustomerSupportForm.get('email')?.invalid && CustomerSupportForm.get('email')?.touched" type="email" class="form-control" placeholder="Enter your valid Email ID" id="email" formControlName="email">                   
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('email')?.hasError('required') && CustomerSupportForm.get('email')?.touched">Email ID is required</small>                   
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('email')?.hasError('email') && CustomerSupportForm.get('email')?.touched">Please enter a valid email address.</small>
+                </div>  
+            </div>
+        </div>
+        <!-- Phone Number -->
+        <div class="form-group">
+            <div class="row mt-4">
+                <div class="col-md">
+                    <label for="phoneNumber" class="form-label">Phone<span class="required">*</span></label>
+                    <input [class.is-invalid]="CustomerSupportForm.get('phoneNumber')?.invalid && CustomerSupportForm.get('phoneNumber')?.touched" type="tel" class="form-control" placeholder="Enter your Phone Number" id="phoneNumber" formControlName="phoneNumber">               
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('phoneNumber')?.hasError('required') && CustomerSupportForm.get('phoneNumber')?.touched">Phone Number is required</small>
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('phoneNumber')?.hasError('pattern') && CustomerSupportForm.get('phoneNumber')?.touched">Please enter a valid 10-digit phone number.</small>
+                </div>  
+            </div>
+        </div>
+        <!-- Address -->
+        <div class="form-group">
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <label for="city" class="form-label">City<span class="required">*</span></label>
+                    <input [class.is-invalid]="CustomerSupportForm.get('city')?.invalid && CustomerSupportForm.get('city')?.touched" type="text" class="form-control" placeholder="Enter your City Name" id="city" formControlName="city">                  
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('city')?.hasError('required') && CustomerSupportForm.get('city')?.touched">City Name is required</small>                  
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('city')?.hasError('minlength') && CustomerSupportForm.get('city')?.touched">City must be at least 4 characters long.</small>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="state" class="form-label">State<span class="required">*</span></label>
+                    <select [class.is-invalid]="CustomerSupportForm.get('state')?.invalid && CustomerSupportForm.get('state')?.touched" class="form-control" id="state" formControlName="state">
+                      <option value="" disabled selected>Select State</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    </select>
+                    <small class="text-danger" [class.d-none]="CustomerSupportForm.get('state')?.valid || CustomerSupportForm.get('state')?.untouched">State is required</small>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="zipCode" class="form-label">ZIP Code<span class="required">*</span></label>
+                    <input [class.is-invalid]="CustomerSupportForm.get('zipCode')?.invalid && CustomerSupportForm.get('zipCode')?.touched" type="number" class="form-control" placeholder="Enter ZIP Code" id="zipCode" formControlName="zipCode">
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('zipCode')?.hasError('required') && CustomerSupportForm.get('zipCode')?.touched">ZIP Code is required</small>
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('zipCode')?.hasError('pattern') && CustomerSupportForm.get('zipCode')?.touched">Please enter a valid 6-digit ZIP Code.</small>
+                </div>   
+            </div>
+        </div>
+        <!-- Description -->
+        <div class="form-group">
+            <div class="row mt-4">
+                <div class="col-md">
+                    <label for="comment" class="form-label">Comment<span class="required">*</span></label>
+                    <input [class.is-invalid]="CustomerSupportForm.get('comment')?.invalid && CustomerSupportForm.get('comment')?.touched" type="text" class="form-control" placeholder="Describe your comments here..." id="comment" formControlName="comment">
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('comment')?.hasError('required') && CustomerSupportForm.get('comment')?.touched">Comment is required</small>
+                    <small class="text-danger" *ngIf="CustomerSupportForm.get('comment')?.hasError('minlength') && CustomerSupportForm.get('comment')?.touched">Comment must contains minimum 30 characters</small>
+                </div>
+            </div>
+        </div>
+        <!-- Button -->
+        <div class="form-group">
+            <div class="row mt-4">
+                <div class="col-md text-center">
+                    <button type="submit" class="custom-submit-btn" [disabled]="CustomerSupportForm.status === 'INVALID'">SUBMIT FORM</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
